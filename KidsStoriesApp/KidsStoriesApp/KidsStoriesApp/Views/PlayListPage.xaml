@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImageSource="ListStories.png"
+             x:Class="KidsStoriesApp.Views.PlayListPage">
+
+    <ScrollView Margin="5,10,5,0" VerticalScrollBarVisibility="Never">
+        <StackLayout x:Name="PlayList" BackgroundColor="Transparent" BindableLayout.ItemsSource="{Binding PropertyTypeList}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <pv:PancakeView HeightRequest="250" Margin="5,5" BackgroundColor="Transparent">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer />
+                            </Grid.GestureRecognizers>
+                            <Editor x:Name="StoryText"
+                                   HeightRequest="150"
+                                   Grid.Row="0" 
+                                   Text="{Binding StoryTitel}"
+                                   TextColor="Black"
+                                    IsReadOnly="True"
+                                   TextTransform="Lowercase"
+                                   BackgroundColor="MediumPurple" 
+                                   />
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Row="1" Grid.Column="0" Padding="2,0,0,0">
+                                    <Button x:Name="BtnRecord" 
+                                        Text="Record"
+                                        HeightRequest="50"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        BackgroundColor="Green"
+                                        FontAttributes="Bold"
+                                        CornerRadius="10"
+                                        FontFamily="Bungee-Regular"
+                                        TextColor="White"  
+                                        FontSize="12"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="1" Grid.Column="1" Padding="20,0,0,0">
+                                    <Button x:Name="BtnStop" 
+                                        Text="Stop"
+                                        HeightRequest="50"
+                                        WidthRequest="100"    
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        BackgroundColor="Blue"
+                                        FontAttributes="Bold" 
+                                        CornerRadius="10" 
+                                        FontFamily="Bungee-Regular"
+                                        TextColor="White"
+                                        FontSize="12"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="1" Grid.Column="2" Padding="20,0,2,1">
+                                    <Button x:Name="BtnSave" 
+                                        Text="Save"
+                                        HeightRequest="50"
+                                        WidthRequest="100"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        BackgroundColor="DarkOrange"
+                                        FontAttributes="Bold" 
+                                        CornerRadius="10"
+                                        FontFamily="Bungee-Regular"
+                                        TextColor="White"
+                                        FontSize="12"/>
+                                </StackLayout>
+                            </Grid>
+                        </Grid>
+                    </pv:PancakeView>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
