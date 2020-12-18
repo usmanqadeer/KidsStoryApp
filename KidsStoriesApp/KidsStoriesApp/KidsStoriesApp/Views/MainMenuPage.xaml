@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="WhiteSmoke"
+             Background="PlayList.png"
+             BackgroundImageSource="MainMenu.png"
+             x:Class="KidsStoriesApp.Views.MainMenuPage">
+        <StackLayout Margin="80,80,80,5" Spacing="10">
+            <Image Source="TitelApp.png"
+                   VerticalOptions="Center"
+                   HeightRequest="50"
+                   WidthRequest="200"
+                   Aspect="Fill"
+                   HorizontalOptions="Center"/>
+            <Button x:Name="BtnStories"
+                    TextColor="WhiteSmoke"
+                    FontAttributes="Bold"
+                    FontSize="15"
+                    BackgroundColor="Green"
+                    FontFamily="Bungee-Regular"
+                    Text="Stories"
+                    BorderWidth="3"
+                    Margin="0,70,0,0"
+                   Clicked="BtnStories_Clicked"
+                    BorderColor="HotPink"/>
+            <Button x:Name="BtnPlayList"
+                    TextColor="WhiteSmoke"
+                    FontAttributes="Bold"
+                    FontSize="15"
+                    BackgroundColor="DarkOrange"
+                    FontFamily="Bungee-Regular"
+                    BorderColor="Green"
+                    BorderWidth="3"
+                    Text="PlayList"/>
+            <Button x:Name="BtnExit"
+                    TextColor="WhiteSmoke"
+                    FontAttributes="Bold"
+                    FontSize="15"
+                    BackgroundColor="Red"
+                    FontFamily="Bungee-Regular"
+                    BorderColor="SteelBlue"
+                    BorderWidth="3"
+                    Text="Exit"/>
+        </StackLayout>
+</ContentPage>
