@@ -10911,6 +10911,9 @@ namespace KidsStoriesApp.Droid
 			// aapt resource value: 0x7F070061
 			public const int design_snackbar_background = 2131165281;
 			
+			// aapt resource value: 0x7F070065
+			public const int icon = 2131165285;
+			
 			// aapt resource value: 0x7F070062
 			public const int ic_mtrl_chip_checked_black = 2131165282;
 			
@@ -10919,9 +10922,6 @@ namespace KidsStoriesApp.Droid
 			
 			// aapt resource value: 0x7F070064
 			public const int ic_mtrl_chip_close_circle = 2131165284;
-			
-			// aapt resource value: 0x7F070065
-			public const int ListStories = 2131165285;
 			
 			// aapt resource value: 0x7F070066
 			public const int MainMenu = 2131165286;
@@ -10978,13 +10978,16 @@ namespace KidsStoriesApp.Droid
 			public const int splash_screen = 2131165303;
 			
 			// aapt resource value: 0x7F070078
-			public const int TitelApp = 2131165304;
+			public const int StoryListPage = 2131165304;
 			
 			// aapt resource value: 0x7F070079
-			public const int tooltip_frame_dark = 2131165305;
+			public const int TitelApp = 2131165305;
 			
 			// aapt resource value: 0x7F07007A
-			public const int tooltip_frame_light = 2131165306;
+			public const int tooltip_frame_dark = 2131165306;
+			
+			// aapt resource value: 0x7F07007B
+			public const int tooltip_frame_light = 2131165307;
 			
 			static Drawable()
 			{
