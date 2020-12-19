@@ -1,36 +1,14 @@
 ﻿using KidsStoriesApp.Models;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace KidsStoriesApp.Services
 {
-    public class StoriesData : IKidsStoriesListDataStore<KidsStoriesList>
+    public class StoriesData : IKidsStoriesListDataStore
     {
-        readonly List<KidsStoriesList> storiesLists;
-        public Task<bool> AddStoriesAsync(KidsStoriesList story)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> DeleteStoriesAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> GetStoriesAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<KidsStoriesList>> GetStoriesAsync(bool forceRefresh = false)
+        public async Task<List<KidsStoriesListModel>> GetAllStories()
         {
             return await App.KidsStoriesDataBase.GetkidsStoriesAsync();
-        }
-
-        public Task<bool> UpdateStoriesAsync(KidsStoriesList story)
-        {
-            throw new NotImplementedException();
         }
     }
 }
