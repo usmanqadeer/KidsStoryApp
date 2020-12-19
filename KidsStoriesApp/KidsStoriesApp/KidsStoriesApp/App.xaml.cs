@@ -1,5 +1,10 @@
-﻿using KidsStoriesApp.Data;
+﻿using CommonServiceLocator;
+using KidsStoriesApp.Data;
+using KidsStoriesApp.Models;
+using KidsStoriesApp.Services;
 using KidsStoriesApp.Views;
+using Unity;
+using Unity.ServiceLocation;
 using Xamarin.Forms;
 
 namespace KidsStoriesApp
@@ -23,6 +28,9 @@ namespace KidsStoriesApp
         public App()
         {
             InitializeComponent();
+            var unityContainer = new UnityContainer();
+            unityContainer.RegisterType<IKidsStoriesListDataStore, StoriesData>();
+            ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(unityContainer));
 
             MainPage = new NavigationPage(new MainMenuPage());
         }
