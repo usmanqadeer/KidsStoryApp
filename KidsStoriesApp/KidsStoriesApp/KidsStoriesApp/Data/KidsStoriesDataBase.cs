@@ -17,40 +17,40 @@ namespace KidsStoriesApp.Data
             Assembly assembly = IntrospectionExtensions.GetTypeInfo(typeof(App)).Assembly;
             Stream ambededDataBaseStreem = assembly.GetManifestResourceStream("KidsStoriesApp.KidsStories.db");
 
-            if (!File.Exists(DataBasePath))
-            {
-                FileStream fileStreamToWrite = File.Create(DataBasePath);
-                ambededDataBaseStreem.Seek(0, SeekOrigin.Begin);
-                ambededDataBaseStreem.CopyTo(fileStreamToWrite);
-                fileStreamToWrite.Close();
-            }
+            //if (!File.Exists(DataBasePath))
+            //{
+            //    FileStream fileStreamToWrite = File.Create(DataBasePath);
+            //    ambededDataBaseStreem.Seek(0, SeekOrigin.Begin);
+            //    ambededDataBaseStreem.CopyTo(fileStreamToWrite);
+            //    fileStreamToWrite.Close();
+            //}
 
             _database = new SQLiteAsyncConnection(DataBasePath);
-            _database.CreateTableAsync<KidsStoriesList>().Wait();
-            _database.CreateTableAsync<RecordStoriesList>().Wait();
+            _database.CreateTableAsync<KidsStoriesListModel>().Wait();
+           // _database.CreateTableAsync<RecordStoriesListModel>().Wait();
 
         }
 
         // Show kidsStories
-        public Task<List<KidsStoriesList>> GetkidsStoriesAsync()
+        public Task<List<KidsStoriesListModel>> GetkidsStoriesAsync()
         {
-            return _database.Table<KidsStoriesList>().ToListAsync();
+            return _database.Table<KidsStoriesListModel>().ToListAsync();
         }
 
         // Save kidsStories
-        public Task<int> SavekidsStoriesAsync(KidsStoriesList kidsStories)
+        public Task<int> SavekidsStoriesAsync(KidsStoriesListModel kidsStories)
         {
             return _database.InsertAsync(kidsStories);
         }
 
         // Delete kidsStories
-        public Task<int> DeletekidsStoriesAsync(KidsStoriesList kidsStories)
+        public Task<int> DeletekidsStoriesAsync(KidsStoriesListModel kidsStories)
         {
             return _database.DeleteAsync(kidsStories);
         }
 
         // Save kidsStories
-        public Task<int> UpdatekidsStoriesAsync(KidsStoriesList kidsStories)
+        public Task<int> UpdatekidsStoriesAsync(KidsStoriesListModel kidsStories)
         {
             return _database.UpdateAsync(kidsStories);
         }
