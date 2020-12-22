@@ -17,17 +17,17 @@ namespace KidsStoriesApp.Data
             Assembly assembly = IntrospectionExtensions.GetTypeInfo(typeof(App)).Assembly;
             Stream ambededDataBaseStreem = assembly.GetManifestResourceStream("KidsStoriesApp.KidsStories.db");
 
-            //if (!File.Exists(DataBasePath))
-            //{
-            //    FileStream fileStreamToWrite = File.Create(DataBasePath);
-            //    ambededDataBaseStreem.Seek(0, SeekOrigin.Begin);
-            //    ambededDataBaseStreem.CopyTo(fileStreamToWrite);
-            //    fileStreamToWrite.Close();
-            //}
+            if (!File.Exists(DataBasePath))
+            {
+                FileStream fileStreamToWrite = File.Create(DataBasePath);
+                ambededDataBaseStreem.Seek(0, SeekOrigin.Begin);
+                ambededDataBaseStreem.CopyTo(fileStreamToWrite);
+                fileStreamToWrite.Close();
+            }
 
             _database = new SQLiteAsyncConnection(DataBasePath);
             _database.CreateTableAsync<KidsStoriesListModel>().Wait();
-           // _database.CreateTableAsync<RecordStoriesListModel>().Wait();
+            _database.CreateTableAsync<RecordStoriesListModel>().Wait();
 
         }
 
@@ -53,6 +53,12 @@ namespace KidsStoriesApp.Data
         public Task<int> UpdatekidsStoriesAsync(KidsStoriesListModel kidsStories)
         {
             return _database.UpdateAsync(kidsStories);
+        }
+
+        // Show kidsStoriesPlayList
+        public Task<List<RecordStoriesListModel>> GetAllPlayListAsync()
+        {
+            return _database.Table<RecordStoriesListModel>().ToListAsync();
         }
     }
 }
