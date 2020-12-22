@@ -9,6 +9,7 @@ namespace KidsStoriesApp.Models
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
+        public string StoryTitel { get; set; }
         public string AudioStoryPath { get; set; }
     }
 }
