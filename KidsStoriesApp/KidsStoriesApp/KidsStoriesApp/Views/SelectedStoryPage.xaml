@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImageSource="StoryBoard.jpg"
+             x:Class="KidsStoriesApp.Views.SelectedStoryPage">
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0">
+                <StackLayout BackgroundColor="Purple" Grid.Row="0" HeightRequest="70">
+                    <Grid Margin="20,10,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ImageButton Grid.Row="0" Grid.Column="0" Source="bac.png" Aspect="Fill" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+                        <Label Text="Play List" Grid.Row="0" Grid.Column="1" Padding="60,0,0,0" FontFamily="Bungee-Regular" TextColor="#27ae60" FontSize="Medium" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Grid.Row="1" Spacing="3">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" Padding="0,20,0,0">
+                        <Label Text="Titel"  HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout Grid.Row="0">
+                                <Editor Text="text" HeightRequest="400"/>
+                            </StackLayout>
+                            <StackLayout Grid.Row="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Text="Record" Grid.Row="0" Grid.Column="0" CornerRadius="10" BackgroundColor="Green"/>
+                                    <Button Text="Stop" Grid.Row="0" Grid.Column="1" CornerRadius="10" BackgroundColor="Pink"/>
+                                    <Switch Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent"/>
+                                    <Button Text="Delete" Grid.Row="1" Grid.Column="0" CornerRadius="10" BackgroundColor="Yellow"/>
+                                    <Button Text="Inser" Grid.Row="1" Grid.Column="1" CornerRadius="10" BackgroundColor="HotPink"/>
+                                    <Button Text="Read" Grid.Row="1" Grid.Column="2" CornerRadius="10" BackgroundColor="GreenYellow"/>
+                                </Grid>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+</ContentPage>
