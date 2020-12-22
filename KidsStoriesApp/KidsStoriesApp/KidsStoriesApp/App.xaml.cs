@@ -1,6 +1,6 @@
 ﻿using CommonServiceLocator;
 using KidsStoriesApp.Data;
-using KidsStoriesApp.Models;
+using KidsStoriesApp.Interfaces;
 using KidsStoriesApp.Services;
 using KidsStoriesApp.Views;
 using Unity;
@@ -29,10 +29,11 @@ namespace KidsStoriesApp
         {
             InitializeComponent();
             var unityContainer = new UnityContainer();
-            unityContainer.RegisterType<IKidsStoriesListDataStore, StoriesData>();
+            unityContainer.RegisterType<IKidsStoriesDataStore, StoriesData>();
+            unityContainer.RegisterType<IPlayListDataStore, PlayListData>();
             ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(unityContainer));
 
-            MainPage = new NavigationPage(new MainMenuPage());
+            MainPage = new NavigationPage(new SelectedStoryPage());
         }
 
         protected override void OnStart()
