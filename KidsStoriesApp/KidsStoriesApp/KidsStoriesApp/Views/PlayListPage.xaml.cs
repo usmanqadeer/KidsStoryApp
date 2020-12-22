@@ -1,4 +1,5 @@
 ﻿using CommonServiceLocator;
+using KidsStoriesApp.Models;
 using KidsStoriesApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,7 +12,7 @@ namespace KidsStoriesApp.Views
         public PlayListPage()
         {
             InitializeComponent();
-            BindingContext = ServiceLocator.Current.GetInstance(typeof(KidsStoriesListViewModel));
+            BindingContext = ServiceLocator.Current.GetInstance(typeof(PlayListPageViewModel));
         }
     }
 }
