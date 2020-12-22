@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             BackgroundImageSource="StoryList.jpg"
+             BackgroundColor="Pink"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="KidsStoriesApp.Views.StoriesListPage">
+    <Grid Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="Purple" Grid.Row="0" HeightRequest="70">
+            <Grid Margin="20,10,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <ImageButton Grid.Row="0" Grid.Column="0" Source="bac.png" Aspect="Fill" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+                <Label Text="Play List" Grid.Row="0" Grid.Column="1" Padding="60,0,0,0" FontFamily="Bungee-Regular" TextColor="#27ae60" FontSize="Medium" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            </Grid>
+        </StackLayout>
+        <StackLayout Grid.Row="2">
+            <ScrollView  Margin="0,10" VerticalScrollBarVisibility="Never">
+                <StackLayout BackgroundColor="Transparent" Opacity="0.5" BindableLayout.ItemsSource="{Binding KidsStories}" Spacing="3">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <pv:PancakeView HeightRequest="80" Margin="20,10,20,10" CornerRadius="10" BackgroundColor="Yellow">
+                                <StackLayout>
+                                    <Grid Margin="10,16,5,5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer />
+                                        </Grid.GestureRecognizers>
+                                        <Image Source="icon.png" 
+                                               Grid.Row="0" 
+                                               Grid.Column="0" 
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" 
+                                               Aspect="Fill" 
+                                               IsAnimationPlaying="True"/>
+                                        <Label Text="{Binding StoryTitel}" 
+                                               FontSize="12"
+                                               TextColor="Black"
+                                               FontFamily="Bungee-Regular"
+                                               VerticalOptions="Center" 
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               VerticalTextAlignment="Center" 
+                                               Grid.Row="0" Grid.Column="1"
+                                               Padding="30,0,0,0"/>
+                                    </Grid>
+                                </StackLayout>
+                            </pv:PancakeView>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </Grid>
+</ContentPage>
