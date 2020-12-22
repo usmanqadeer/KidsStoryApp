@@ -3,44 +3,58 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="WhiteSmoke"
-             Background="PlayList.png"
              BackgroundImageSource="MainMenu.png"
              x:Class="KidsStoriesApp.Views.MainMenuPage">
-        <StackLayout Margin="80,80,80,5" Spacing="10">
+        <StackLayout Margin="80,10,80,5" Spacing="10" VerticalOptions="Center" HorizontalOptions="Center">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
             <Image Source="TitelApp.png"
+                   Grid.Row="0"
                    VerticalOptions="Center"
-                   HeightRequest="50"
+                   HeightRequest="90"
                    WidthRequest="200"
                    Aspect="Fill"
                    HorizontalOptions="Center"/>
             <Button x:Name="BtnStories"
-                    TextColor="WhiteSmoke"
+                    TextColor="Green"
                     FontAttributes="Bold"
                     FontSize="15"
-                    BackgroundColor="Green"
+                    Grid.Row="1"
+                    BackgroundColor="Transparent"
                     FontFamily="Bungee-Regular"
                     Text="Stories"
                     BorderWidth="3"
-                    Margin="0,70,0,0"
-                   Clicked="BtnStories_Clicked"
+                    CornerRadius="10"
+                    Command="{Binding  NavigateToStories}"
                     BorderColor="HotPink"/>
             <Button x:Name="BtnPlayList"
-                    TextColor="WhiteSmoke"
+                    TextColor="Blue"
                     FontAttributes="Bold"
                     FontSize="15"
-                    BackgroundColor="DarkOrange"
+                    Grid.Row="2"
+                    BackgroundColor="Transparent"
                     FontFamily="Bungee-Regular"
                     BorderColor="Green"
                     BorderWidth="3"
+                    Command="{Binding NavigateToPlayList}"
+                    CornerRadius="10"
                     Text="PlayList"/>
             <Button x:Name="BtnExit"
-                    TextColor="WhiteSmoke"
+                    TextColor="Red"
                     FontAttributes="Bold"
                     FontSize="15"
-                    BackgroundColor="Red"
+                    BackgroundColor="Transparent"
                     FontFamily="Bungee-Regular"
                     BorderColor="SteelBlue"
                     BorderWidth="3"
+                    Grid.Row="3"
+                    CornerRadius="10"
                     Text="Exit"/>
-        </StackLayout>
+        </Grid>
+    </StackLayout>
 </ContentPage>
