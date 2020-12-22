@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace KidsStoriesApp.Services
 {
-    public interface IKidsStoriesListDataStore
+    public interface IKidsStoriesDataStore
     {
        Task<List<KidsStoriesListModel>> GetAllStories();
     }
