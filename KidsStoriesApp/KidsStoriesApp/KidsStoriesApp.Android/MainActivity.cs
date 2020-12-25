@@ -4,6 +4,11 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
 using Android.OS;
+using Android.Support.V4.Content;
+using Android;
+using System;
+using System.IO;
+using Android.Support.V4.App;
 
 namespace KidsStoriesApp.Droid
 {
@@ -19,10 +24,13 @@ namespace KidsStoriesApp.Droid
             base.Window.RequestFeature(WindowFeatures.ActionBar);
             base.SetTheme(Resource.Style.MainTheme);
             base.OnCreate(savedInstanceState);
-
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.RecordAudio) != Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.RecordAudio }, 1);
+            }
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
