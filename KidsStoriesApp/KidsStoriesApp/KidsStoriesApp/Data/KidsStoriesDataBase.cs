@@ -60,5 +60,9 @@ namespace KidsStoriesApp.Data
         {
             return _database.Table<RecordStoriesListModel>().ToListAsync();
         }
+        public Task<int> SaveAudioAsync(RecordStoriesListModel kidsStories)
+        {
+            return _database.InsertAsync(kidsStories);
+        }
     }
 }
