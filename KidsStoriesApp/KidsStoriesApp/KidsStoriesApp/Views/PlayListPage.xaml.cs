@@ -13,6 +13,7 @@ namespace KidsStoriesApp.Views
         {
             InitializeComponent();
             BindingContext = ServiceLocator.Current.GetInstance(typeof(PlayListPageViewModel));
+            
         }
     }
 }
