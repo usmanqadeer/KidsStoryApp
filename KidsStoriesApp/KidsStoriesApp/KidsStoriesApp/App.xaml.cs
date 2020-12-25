@@ -12,6 +12,20 @@ namespace KidsStoriesApp
     public partial class App : Application
     {
         private static KidsStoriesDataBase storiesDataBase;
+        private AudioFilePath audioFilePath;
+
+        public AudioFilePath AudioFilePath
+        {
+            get
+            {
+                if (audioFilePath == null)
+                {
+                    audioFilePath = new AudioFilePath();
+                }
+                return audioFilePath;
+            }
+
+        }
 
         public static  KidsStoriesDataBase KidsStoriesDataBase
         {
@@ -33,7 +47,7 @@ namespace KidsStoriesApp
             unityContainer.RegisterType<IPlayListDataStore, PlayListData>();
             ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(unityContainer));
 
-            MainPage = new NavigationPage(new SelectedStoryPage());
+            MainPage = new NavigationPage(new MainMenuPage());
         }
 
         protected override void OnStart()
