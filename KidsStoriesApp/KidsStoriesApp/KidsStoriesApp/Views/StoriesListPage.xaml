@@ -40,7 +40,7 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <Grid.GestureRecognizers>
-                                            <TapGestureRecognizer />
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                                         </Grid.GestureRecognizers>
                                         <Image Source="icon.png" 
                                                Grid.Row="0" 
@@ -49,7 +49,9 @@
                                                VerticalOptions="Center" 
                                                Aspect="Fill" 
                                                IsAnimationPlaying="True"/>
-                                        <Label Text="{Binding StoryTitel}" 
+                                        <Label x:Name="lblStory" Text="{Binding StoryTitel}"
+                                               TabIndex="{Binding ID}"
+                                               TextDecorations="{Binding StoryText}"
                                                FontSize="12"
                                                TextColor="Black"
                                                FontFamily="Bungee-Regular"
