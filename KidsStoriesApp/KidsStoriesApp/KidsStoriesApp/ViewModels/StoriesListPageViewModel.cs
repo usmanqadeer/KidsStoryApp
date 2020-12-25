@@ -2,6 +2,7 @@
 using KidsStoriesApp.Services;
 using System;
 using System.Collections.ObjectModel;
+using Xamarin.Forms;
 
 namespace KidsStoriesApp.ViewModels
 {
@@ -9,6 +10,8 @@ namespace KidsStoriesApp.ViewModels
     {
         public ObservableCollection<KidsStoriesListModel> KidsStories { get; set; }
         private IKidsStoriesDataStore _kidsStoriesListDataStore;
+        public Command SelectegStory { get; set; }
+        private INavigation navigation;
         public StoriesListPageViewModel(IKidsStoriesDataStore kidsStoriesListDataStore)
         {
             KidsStories = new ObservableCollection<KidsStoriesListModel>();
