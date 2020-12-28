@@ -18,12 +18,12 @@ namespace KidsStoriesApp.ViewModels
 
         private void NavigateToStoriesListPage()
         {
-            _navigation.PushModalAsync(new StoriesListPage());
+            _navigation.PushAsync(new StoriesListPage());
         }
 
         private void NaviGateToPlayListPage()
         {
-            _navigation.PushModalAsync(new PlayListPage());
+            _navigation.PushAsync(new PlayListPage());
         }
     }
 }
