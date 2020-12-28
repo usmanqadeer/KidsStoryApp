@@ -9,6 +9,7 @@ using Android;
 using System;
 using System.IO;
 using Android.Support.V4.App;
+using MediaManager;
 
 namespace KidsStoriesApp.Droid
 {
@@ -19,15 +20,20 @@ namespace KidsStoriesApp.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+
             Window.AddFlags(WindowManagerFlags.Fullscreen);
             Window.ClearFlags(WindowManagerFlags.ForceNotFullscreen);
+
             base.Window.RequestFeature(WindowFeatures.ActionBar);
             base.SetTheme(Resource.Style.MainTheme);
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            CrossMediaManager.Current.Init(this);
             LoadApplication(new App());
+
             if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.RecordAudio) != Permission.Granted)
+            
             {
                 ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.RecordAudio }, 1);
             }
