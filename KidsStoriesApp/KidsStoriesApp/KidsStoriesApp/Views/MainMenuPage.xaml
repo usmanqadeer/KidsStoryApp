@@ -45,6 +45,7 @@
                     CornerRadius="10"
                     Text="PlayList"/>
             <Button x:Name="BtnExit"
+                    Clicked="BtnExit_Clicked"
                     TextColor="Red"
                     FontAttributes="Bold"
                     FontSize="15"
