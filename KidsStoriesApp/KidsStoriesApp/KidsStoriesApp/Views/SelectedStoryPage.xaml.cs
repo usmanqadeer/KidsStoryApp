@@ -1,46 +1,72 @@
-﻿using KidsStoriesApp.ViewModels;
+﻿using KidsStoriesApp.Models;
 using Plugin.AudioRecorder;
 using System;
+using System.ComponentModel;
+using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace KidsStoriesApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SelectedStoryPage : ContentPage
+    public partial class SelectedStoryPage : ContentPage, INotifyPropertyChanged
     {
         AudioRecorderService recorder;
         AudioPlayer player;
+        string story_title = "";
         private string file_name;
+        string file_path;
         bool isTimerRunning = false;
         int seconds = 0, minutes = 0;
-        private string _storyText;
+        public KidsStoriesListModel storiesListModel { get; set; }
+        private int _ID;
+
+        public int StoryID
+        {
+            get { return _ID; }
+            set { _ID = value; OnPropertyChanged("StoryID"); }
+        }
+        private string _storyTitel;
+
+        public string StoryTitel
+        {
+            get { return _storyTitel; }
+            set { _storyTitel = value; OnPropertyChanged("StoryTitel"); }
+        }
+        private string _storyTest;
 
         public string StoryText
         {
-            get { return _storyText; }
-            set { _storyText = value; }
+            get { return _storyTest; }
+            set { _storyTest = value; OnPropertyChanged("StoryText"); }
         }
-
-        public SelectedStoryPage(string storyText)
+       
+        public SelectedStoryPage(KidsStoriesListModel kidsStoriesListModel)
         {
             InitializeComponent();
             this.BindingContext = this;
-            _storyText = storyText;
-            if (Device.RuntimePlatform == Device.iOS)
-                this.Padding = new Thickness(0, 28, 0, 0);
-
+            this.storiesListModel = kidsStoriesListModel;
+            _ID = storiesListModel.StoryID;
+            _storyTest = storiesListModel.StoryText;
+            _storyTitel = storiesListModel.StoryTitel;
             recorder = new AudioRecorderService
             {
                 StopRecordingAfterTimeout = true,
                 TotalAudioTimeout = TimeSpan.FromSeconds(15),
                 AudioSilenceTimeout = TimeSpan.FromSeconds(2)
             };
-
+            recorder.AudioInputReceived += Recorder_OnInputRecieved;
+            ShowData();
             player = new AudioPlayer();
             player.FinishedPlaying += Finish_Playing;
         }
-        void Finish_Playing(object sender, EventArgs e)
+        private void ShowData()
+        {
+            story_title = StoryTitel;
+            txtStoryTitel.Text = story_title;
+            txtStoryText.Text = StoryText;
+        }
+        private void Finish_Playing(object sender, EventArgs e)
         {
             bntRecord.IsEnabled = true;
             bntRecord.BackgroundColor = Color.FromHex("#7cbb45");
@@ -52,8 +78,9 @@ namespace KidsStoriesApp.Views
             lblMinutes.Text = "00";
         }
 
-        async void bntRecord_Clicked(object sender, EventArgs e)
+        private async void bntRecord_Clicked(object sender, EventArgs e)
         {
+            //recorder.FilePath = "AudioFiles/";
             if (!recorder.IsRecording)
             {
                 seconds = 0;
@@ -88,11 +115,11 @@ namespace KidsStoriesApp.Views
                     }
                     return isTimerRunning;
                 });
-
-                //
                 recorder.StopRecordingOnSilence = IsSilence.IsToggled;
                 var recordTask = await recorder.StartRecording();
-                file_name = recordTask.ToString();
+
+                
+
                 
                 bntRecord.IsEnabled = false;
                 bntRecord.BackgroundColor = Color.Silver;
@@ -104,7 +131,7 @@ namespace KidsStoriesApp.Views
                 await recordTask;
             }
         }
-        void StopRecording()
+        private void StopRecording()
         {
             isTimerRunning = false;
             bntRecord.IsEnabled = true;
@@ -120,23 +147,33 @@ namespace KidsStoriesApp.Views
         private async void bntStop_Clicked(object sender, EventArgs e)
         {
             StopRecording();
+            file_name = story_title;
+            
             
             await recorder.StopRecording();
         }
-
         private async void btnSave_Clicked(object sender, EventArgs e)
         {
-            if(file_name != null)
+            string dir_path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AudioFiles");
+            if (!Directory.Exists(dir_path))
+                Directory.CreateDirectory(dir_path);
+
+            string new_file_path = dir_path + "/" + file_name + ".wav";
+
+            if (File.Exists(new_file_path))
+                File.Delete(new_file_path);
+
+            File.Copy(file_path, new_file_path);
+                        
+            var audio_id = await App.KidsStoriesDataBase.SaveAudioAsync(new Models.RecordStoriesListModel {StoryID = _ID, AudioStoryPath = new_file_path });
+                
+            if(audio_id > 0)
             {
-               var audio_id = await App.KidsStoriesDataBase.SaveAudioAsync(new Models.RecordStoriesListModel {AudioStoryPath = file_name,StoryTitel = "Testing"});
-                if(audio_id > 0)
-                {
-                    await DisplayAlert("Success","Record enter..","ok");
-                }
+                await DisplayAlert("Successfully!","Recording  Save successfully","ok");
             }
         }
 
-        void bntPlay_Clicked(object sender, EventArgs e)
+        private void bntPlay_Clicked(object sender, EventArgs e)
         {
             try
             {
@@ -151,6 +188,11 @@ namespace KidsStoriesApp.Views
             {
                 throw ex;
             }
+        }
+
+        private void Recorder_OnInputRecieved(object sender, string audio_file)
+        {
+            file_path = audio_file;
         }
     }
 }
