@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+            BackgroundImageSource="StoryList.jpg"
+             x:Class="KidsStoriesApp.Views.AddNewStoryPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Transparent">
+            <Entry x:Name="txtStoryID" IsVisible="False" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout BackgroundColor="Purple" Grid.Row="0" HeightRequest="70">
+                    <Grid Margin="20,10,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ImageButton Grid.Row="0"
+                                     x:Name="btnback"
+                                     Clicked="btnback_Clicked"
+                                     Grid.Column="0" 
+                                     Source="bac.png"
+                                     Aspect="Fill"
+                                     HeightRequest="40"
+                                     WidthRequest="40" 
+                                     BackgroundColor="Transparent"/>
+                        <Label Text=" New Story "
+                               Grid.Row="0"
+                               Grid.Column="1"
+                               Padding="60,0,0,0"
+                               FontFamily="Bungee-Regular"
+                               TextColor="#27ae60" 
+                               FontSize="Medium" 
+                               VerticalTextAlignment="Center" 
+                               HorizontalTextAlignment="Center"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Margin="5,0,5,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Entry Grid.Row="0"
+                               x:Name="txtStoryTitel"
+                               BackgroundColor="Transparent"
+                               Placeholder="Story Titel"
+                               PlaceholderColor="Silver"
+                               FontFamily="Bungee-Regular"
+                               TextColor="#27ae60"
+                               FontSize="Medium"
+                               VerticalTextAlignment="Center" 
+                               HorizontalTextAlignment="Center"/>
+                        <Editor Placeholder="Wrrite story............"
+                                x:Name="txtStoryText"
+                                AutoSize="Disabled"
+                                PlaceholderColor="Silver"
+                                HeightRequest="450"
+                                BackgroundColor="WhiteSmoke"
+                                Grid.Row="1"
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                TextColor="Black"/>
+                        <StackLayout Grid.Row="2">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout Grid.Row="0">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button Text="Save" x:Name="BtnSave" Clicked="BtnSave_Clicked" TextColor="White" FontAttributes="Bold" BackgroundColor="Green" Grid.Row="0" Grid.Column="0"/>
+                                        <Button Text="Clear" x:Name="BtnClear" Clicked="BtnClear_Clicked" TextColor="White" FontAttributes="Bold" BackgroundColor="Red" Grid.Row="0" Grid.Column="1"/>
+                                        <Button Text="Updtate" Clicked="ButUpdate_Clicked" TextColor="White" FontAttributes="Bold" BackgroundColor="YellowGreen" Grid.Row="0" Grid.Column="2"/>
+                                    </Grid>
+                                    
+                                </StackLayout>
+                            </Grid>
+                            
+                        </StackLayout>
+                    </Grid>
+                    
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
