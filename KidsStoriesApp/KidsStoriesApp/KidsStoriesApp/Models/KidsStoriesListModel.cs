@@ -5,7 +5,7 @@ namespace KidsStoriesApp.Models
     public class KidsStoriesListModel
     {
         [PrimaryKey, AutoIncrement]
-        public int ID { get; set; }
+        public int StoryID { get; set; }
         public string StoryTitel { get; set; }
         public string StoryText { get; set; }
     }
