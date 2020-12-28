@@ -4,15 +4,15 @@
              NavigationPage.HasNavigationBar="False"
              BackgroundImageSource="StoryList.jpg"
              x:Class="KidsStoriesApp.Views.SelectedStoryPage">
-    <StackLayout BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center">
+    <StackLayout BackgroundColor="Transparent">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0">
-                <StackLayout BackgroundColor="Transparent" Grid.Row="0" HeightRequest="70">
-                    <Grid Margin="20,10,0,0">
+                <StackLayout BackgroundColor="Purple" Grid.Row="0" HeightRequest="70">
+                    <Grid Padding="0,10,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -26,14 +26,14 @@
                     </Grid>
                 </StackLayout>
             </StackLayout>
-            <StackLayout Grid.Row="1" Spacing="3">
+            <StackLayout Grid.Row="1">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <StackLayout Grid.Row="0" Padding="0,20,0,0">
-                        <Label Text="{Binding StoryText}" TabIndex="{Binding StoryID}" TextColor="Yellow" FontAttributes="Bold" FontFamily="Bungee-Regular" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <StackLayout Grid.Row="0">
+                        <Entry  x:Name="txtStoryTitel" TextColor="Yellow" FontAttributes="Bold" FontFamily="Bungee-Regular" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                     </StackLayout>
                     <StackLayout Grid.Row="1">
                         <Grid>
@@ -41,8 +41,8 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <StackLayout Grid.Row="0" Padding="5,0,5,0">
-                                <Editor Text="{Binding StoryText}" HeightRequest="230" BackgroundColor="Transparent" TextColor="Black" FontSize="14" FontAttributes="Bold"/>
+                            <StackLayout Grid.Row="0">
+                                <Editor x:Name="txtStoryText" HeightRequest="270" IsReadOnly="False" BackgroundColor="White" TextColor="Black" FontSize="14" FontAttributes="Bold"/>
                             </StackLayout>
                             <StackLayout Grid.Row="1">
                                 <Grid>
@@ -52,14 +52,14 @@
                                     </Grid.RowDefinitions>
                                     <StackLayout BackgroundColor = "Transparent" Grid.Row="0">
                                         <StackLayout Orientation="Horizontal">
-                                            <Image Source= "Big_microphone" />
+                                            <Image Source= "Big_microphone" HeightRequest="100" WidthRequest="100" />
 
-                                            <StackLayout Orientation="Vertical">
+                                            <StackLayout Orientation="Vertical" Padding="35,0,0,0">
                                                 <Label Text="Recording..." FontSize = "21"/>
                                                 <StackLayout Orientation = "Horizontal">
-                                                    <Label x:Name="lblMinutes" Text="00" FontSize = "70"/>
-                                                    <Label Text=":" FontSize = "70"/>
-                                                    <Label x:Name="lblSeconds" Text="00" FontSize = "70"/>
+                                                    <Label x:Name="lblMinutes" Text="00" FontSize = "35"/>
+                                                    <Label Text=":" FontSize = "35"/>
+                                                    <Label x:Name="lblSeconds" Text="00" FontSize = "35"/>
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal" Padding="0,0,0,20">
                                                     <Label Text="Detect silence:" FontSize = "21"/>
@@ -67,26 +67,17 @@
                                                 </StackLayout>
                                             </StackLayout>
                                         </StackLayout>
-                                        <FlexLayout JustifyContent="SpaceAround" Padding="5,0,5,0">
+                                        <FlexLayout JustifyContent="SpaceAround">
                                             <Button x:Name="bntRecord" Text = "Record" BackgroundColor="#7cbb45" WidthRequest="120" Image="Small_Microphone" Clicked="bntRecord_Clicked"/>
                                             <Button x:Name="bntStop" Text = "Stop" BackgroundColor="Silver"  WidthRequest="120" Image="Stop" Clicked="bntStop_Clicked" />
                                             <Button x:Name="bntPlay" Text = "Play" BackgroundColor="Silver"  WidthRequest="120" Image="Start" Clicked="bntPlay_Clicked"/>
                                         </FlexLayout>
                                     </StackLayout>
-                                    <StackLayout Grid.Row="1" Padding="5,0,5,5">
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Button Text="New" Grid.Column="0" BackgroundColor="Green" TextColor="White"/>
-                                            <Button Grid.Column="1" BackgroundColor="Red" TextColor="White" Text="Delete" />
-                                            <Button Grid.Column="2" BackgroundColor="MediumPurple" TextColor="White" Text="Save Recording" FontSize="12" FontAttributes="Bold" Clicked="btnSave_Clicked"/>
-                                        </Grid>
+                                    <StackLayout Grid.Row="1" >
+                                     <Button Grid.Column="2" BackgroundColor="MediumPurple" TextColor="White" Text="Save Recording" FontSize="12" FontAttributes="Bold" Clicked="btnSave_Clicked"/>
                                     </StackLayout>
-
                                 </Grid>
+
                             </StackLayout>
                         </Grid>
                     </StackLayout>
