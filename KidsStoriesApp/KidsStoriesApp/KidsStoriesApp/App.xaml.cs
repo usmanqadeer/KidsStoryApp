@@ -1,30 +1,21 @@
-﻿using CommonServiceLocator;
-using KidsStoriesApp.Data;
-using KidsStoriesApp.Interfaces;
-using KidsStoriesApp.Services;
+﻿using KidsStoriesApp.Data;
 using KidsStoriesApp.Views;
-using Unity;
-using Unity.ServiceLocation;
 using Xamarin.Forms;
+using System;
+using System.IO;
 
 namespace KidsStoriesApp
 {
     public partial class App : Application
     {
         private static KidsStoriesDataBase storiesDataBase;
-        private AudioFilePath audioFilePath;
+        private static AudioFilePath audioFilePath;
 
-        public AudioFilePath AudioFilePath
+        public static void CreateAudioDirectory()
         {
-            get
-            {
-                if (audioFilePath == null)
-                {
-                    audioFilePath = new AudioFilePath();
-                }
-                return audioFilePath;
-            }
-
+            string audio_dir = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AudioFiles");
+            if (!Directory.Exists(audio_dir))
+                Directory.CreateDirectory(audio_dir);
         }
 
         public static  KidsStoriesDataBase KidsStoriesDataBase
@@ -42,11 +33,6 @@ namespace KidsStoriesApp
         public App()
         {
             InitializeComponent();
-            var unityContainer = new UnityContainer();
-            unityContainer.RegisterType<IKidsStoriesDataStore, StoriesData>();
-            unityContainer.RegisterType<IPlayListDataStore, PlayListData>();
-            ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(unityContainer));
-
             MainPage = new NavigationPage(new MainMenuPage());
         }
 
