@@ -1,5 +1,4 @@
-﻿using CommonServiceLocator;
-using KidsStoriesApp.Models;
+﻿using KidsStoriesApp.Models;
 using KidsStoriesApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,30 +8,44 @@ namespace KidsStoriesApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StoriesListPage : ContentPage
     {
-        private int id;
-        private string storyName;
-        private string storyTitel;
-        public int ID
-        {
-            get { return id; }
-            set { id = value; }
-        }
-        public string StoryText
-        {
-            get { return storyName; }
-            set { storyName = value; }
-        }
         public StoriesListPage()
         {
-
             InitializeComponent();
-            BindingContext = ServiceLocator.Current.GetInstance(typeof(StoriesListPageViewModel));
+            this.BindingContext = new StoriesListPageViewModel(Navigation);
         }
-       
-        private async void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
+        private async void BtnDeleteStory_Clicked(object sender, System.EventArgs e)
         {
-            await Navigation.PushModalAsync(new SelectedStoryPage(storyName));
+            try
+            {
+                var kidsStoriesListModel = (sender as View).BindingContext as KidsStoriesListModel;
+                var _storyID = await App.KidsStoriesDataBase.DeletekidsStoriesAsync(kidsStoriesListModel);
+                if (_storyID > 0)
+                {
+                    await DisplayAlert("Deleted!!", "Story Delete succesfully","Cancel", "ok");
+                }
+            }
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
+        private async void BtnUpdate_Clicked(object sender, System.EventArgs e)
+        {
+            var kidsStoriesListModel = (sender as View).BindingContext as KidsStoriesListModel;
+            await this.Navigation.PushAsync(new AddNewStoryPage(kidsStoriesListModel));
+        }
+
+        private async void btnRecordingNewStory_Clicked(object sender, System.EventArgs e)
+        {
+            var kidsStoriesListModel = (sender as View).BindingContext as KidsStoriesListModel;
+            await this.Navigation.PushAsync(new SelectedStoryPage(kidsStoriesListModel));
+        }
+
+        private async void btnBack_Clicked(object sender, System.EventArgs e)
+        {
+            await this.Navigation.PopAsync();
+        }
     }
 }
