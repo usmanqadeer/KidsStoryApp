@@ -64,5 +64,11 @@ namespace KidsStoriesApp.Data
         {
             return _database.InsertAsync(kidsStories);
         }
+
+        // Delete kidsStoriesPlayList
+        public Task<int> DeletekidsRecordStoriesAsync(RecordStoriesListModel recordkidsStories)
+        {
+            return _database.DeleteAsync(recordkidsStories);
+        }
     }
 }
