@@ -9,8 +9,6 @@ namespace KidsStoriesApp
     public partial class App : Application
     {
         private static KidsStoriesDataBase storiesDataBase;
-        private static AudioFilePath audioFilePath;
-
         public static void CreateAudioDirectory()
         {
             string audio_dir = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AudioFiles");
