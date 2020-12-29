@@ -52,7 +52,7 @@
                         <Entry Grid.Row="0"
                                x:Name="txtStoryTitel"
                                BackgroundColor="Transparent"
-                               Placeholder="Story Titel"
+                               Placeholder="Story Title"
                                PlaceholderColor="Silver"
                                FontFamily="Bungee-Regular"
                                TextColor="#27ae60"
