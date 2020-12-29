@@ -59,8 +59,8 @@
                                     </StackLayout>
                                     <StackLayout BackgroundColor = "Transparent" Grid.Row="1">
                                         <FlexLayout JustifyContent="Start">
-                                            <Button x:Name="bntplay" Clicked="bntplay_Clicked" Text = "Play" BackgroundColor="#7cbb45" WidthRequest="180" Image="playAudio.png" />
-                                            <Button x:Name="bntStop" Clicked="bntStop_Clicked" Text = "Stop" BackgroundColor="Silver"  WidthRequest="180" Image="{Binding PlayIcon}" />
+                                            <Button x:Name="bntplay" Clicked="bntplay_Clicked" BackgroundColor="#7cbb45" WidthRequest="180" Image="playAudio.png" />
+                                            <Button x:Name="bntStop" Clicked="bntStop_Clicked" BackgroundColor="Silver"  WidthRequest="180" Image="{Binding PlayIcon}" />
                                         </FlexLayout>
                                     </StackLayout>
                                 </Grid>
