@@ -149,6 +149,39 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\splash.png" />
+    <BundleResource Include="Resources\Stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\StoryList.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\TitelApp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bac.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Big_microphone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MainMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\playAudio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Small_Microphone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Splash.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Start.png" />
   </ItemGroup>
 </Project>
