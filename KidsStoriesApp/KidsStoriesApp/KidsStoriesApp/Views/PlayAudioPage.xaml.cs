@@ -57,7 +57,7 @@ namespace KidsStoriesApp.Views
             }
         }
 
-        public string PlayIcon { get => isPlaying ? "Stop.png" : "Start.png"; }
+        public string PlayIcon { get => isPlaying ? "Start.png" : "Stop.png"; }
 
         public RecordStoriesListModel RecordStoriesListModel { get; set; }
         AudioPlayer player = new AudioPlayer();
@@ -123,11 +123,6 @@ namespace KidsStoriesApp.Views
                 throw;
             }
         }
-        private async void btnBack_Clicked_1(object sender, EventArgs e)
-        {
-            await this.Navigation.PopAsync();
-        }
-
         private async  void bntplay_Clicked(object sender, EventArgs e)
         {
             var mediaInfo = CrossMediaManager.Current;
