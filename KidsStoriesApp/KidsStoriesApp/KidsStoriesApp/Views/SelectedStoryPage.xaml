@@ -21,7 +21,7 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <ImageButton Grid.Row="0" Grid.Column="0" Source="bac.png" Aspect="Fill" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+                        <ImageButton x:Name="btnBack" Clicked="btnBack_Clicked" Grid.Row="0" Grid.Column="0" Source="bac.png" Aspect="Fill" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
                         <Label Text="Selected Story" Grid.Row="0" Grid.Column="1" Padding="60,0,0,0" FontFamily="Bungee-Regular" TextColor="#27ae60" FontSize="Medium" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                     </Grid>
                 </StackLayout>
