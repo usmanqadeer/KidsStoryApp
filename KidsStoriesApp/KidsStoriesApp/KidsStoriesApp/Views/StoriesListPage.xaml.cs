@@ -8,10 +8,11 @@ namespace KidsStoriesApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StoriesListPage : ContentPage
     {
+        StoriesListPageViewModel storiesListPageViewModel = new StoriesListPageViewModel();
         public StoriesListPage()
         {
             InitializeComponent();
-            this.BindingContext = new StoriesListPageViewModel(Navigation);
+            this.BindingContext = new StoriesListPageViewModel();
         }
         private async void BtnDeleteStory_Clicked(object sender, System.EventArgs e)
         {
@@ -21,7 +22,8 @@ namespace KidsStoriesApp.Views
                 var _storyID = await App.KidsStoriesDataBase.DeletekidsStoriesAsync(kidsStoriesListModel);
                 if (_storyID > 0)
                 {
-                    await DisplayAlert("Deleted!!", "Story Delete succesfully","Cancel", "ok");
+                    storiesListPageViewModel.GetStoriesAsync();
+                    await DisplayAlert("Deleted!!", "Story Delete succesfully","No", "ok");
                 }
             }
             catch (System.Exception ex)
