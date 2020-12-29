@@ -80,7 +80,6 @@ namespace KidsStoriesApp.Views
 
         private async void bntRecord_Clicked(object sender, EventArgs e)
         {
-            //recorder.FilePath = "AudioFiles/";
             if (!recorder.IsRecording)
             {
                 seconds = 0;
@@ -117,10 +116,6 @@ namespace KidsStoriesApp.Views
                 });
                 recorder.StopRecordingOnSilence = IsSilence.IsToggled;
                 var recordTask = await recorder.StartRecording();
-
-                
-
-                
                 bntRecord.IsEnabled = false;
                 bntRecord.BackgroundColor = Color.Silver;
                 bntPlay.IsEnabled = false;
@@ -148,8 +143,6 @@ namespace KidsStoriesApp.Views
         {
             StopRecording();
             file_name = story_title;
-            
-            
             await recorder.StopRecording();
         }
         private async void btnSave_Clicked(object sender, EventArgs e)
@@ -165,7 +158,7 @@ namespace KidsStoriesApp.Views
 
             File.Copy(file_path, new_file_path);
                         
-            var audio_id = await App.KidsStoriesDataBase.SaveAudioAsync(new Models.RecordStoriesListModel {StoryID = _ID, AudioStoryPath = new_file_path });
+            var audio_id = await App.KidsStoriesDataBase.SaveAudioAsync(new Models.RecordStoriesListModel {StoryID = _ID, AudioStoryPath = new_file_path, StoryTitel = story_title });
                 
             if(audio_id > 0)
             {
@@ -194,5 +187,11 @@ namespace KidsStoriesApp.Views
         {
             file_path = audio_file;
         }
+
+        private async void btnBack_Clicked(object sender, EventArgs e)
+        {
+            await this.Navigation.PopAsync();
+        }
+
     }
 }
