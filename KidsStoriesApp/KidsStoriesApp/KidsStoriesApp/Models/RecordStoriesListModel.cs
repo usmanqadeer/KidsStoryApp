@@ -1,7 +1,4 @@
 ﻿using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace KidsStoriesApp.Models
 {
@@ -10,6 +7,7 @@ namespace KidsStoriesApp.Models
         [PrimaryKey, AutoIncrement]
         public int AudioID { get; set; }
         public int StoryID { get; set; }
+        public string StoryTitel { get; set; }
         public string AudioStoryPath { get; set; }
     }
 }
