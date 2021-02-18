@@ -10,7 +10,7 @@ namespace KidsStoriesApp.Data
 {
     public class KidsStoriesDataBase
     {
-        readonly SQLiteAsyncConnection _database;
+        private readonly SQLiteAsyncConnection _database;
         public KidsStoriesDataBase()
         {
             string DataBasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "KidsStories.db");
